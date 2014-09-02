@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+<!-- Meta Tag for responsive -->
+<meta name=”viewport” content=”width=1024, minimal-ui”>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+
+<title>MuseLab - Curated fashion</title>
+    
+<!-- Loading of stylesheet for the design -->
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- Important external stylesheets -->
+<link rel="stylesheet" href="css/fontello.css">
+
+<!-- First we will load jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    
+<!-- Now we load the JS files for the fancy things on the page -->
+<script type="text/javascript" src="js/headroom.js"></script>
+<script type="text/javascript" src="js/jQuery.headroom.js"></script>
+<script type="text/javascript" src="js/retina.js"></script>
+<script type="text/javascript" src="js/jquery.scrollToTop.min.js"></script>
+
+<!-- Finally we will load the 2 fonts from Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<!-- Scroll To Top -->
+<a href="#top" id="toTop"></a>
+    
+<!-- HEADER SECTION -->
+<header>
+
+<!-- Start of Header - full width area with class for the headroom JS hiding -->
+<div class="header navbar-fixed-top">
+    
+    <!-- Start of Header Container - the content div that is a set width and centralized -->
+    <div class="header-container">
+        
+        <!-- Logo - it's the logo image -->
+        <div class="logo">
+            <img src="img/logo.png" alt="top logo" />
+        </div><!-- End of Logo -->
+        
+    </div><!-- End of Header Container -->
+    
+</div><!-- End of Header -->
+
+</header>
+
+<!-- TOP SECTION -->
+
+
+<!-- Start of Background - the top image that gets covered when you scroll -->
+<div id="background">
+
+    <!-- Start of Shade - this is the css based gradient over the image for that cool effect -->
+    <div class="shade">
+        
+        <!-- Start of Main Title + Intro -->
+        <div class="huge-title">
+            
+            <h2>Discover the fashion trends.</h2>
+            <h4>Right from the ones that start them.</h4>
+                   
+        </div><!-- End of Main Title + Intro -->
+        
+        <!-- Start of Scroll Down Message and animation -->
+        <div id="godown" class="floating">
+            
+            <p>Be among the first to get notified. Scroll Down.</p>
+            <img src="img/godown.png" alt="down"/>
+            
+        </div><!-- End of Scroll Down Message and animation -->
+        
+    </div><!-- End of Shade -->
+    
+</div><!-- End of Background -->
+
+
+
+
+<!-- INTRO SECTION -->
+
+<!-- Start of Wrapper - the full width container -->
+<div class="wrapper">
+
+    <!-- Start of Container - we use this for parallax on scroll -->
+    <div class="container">
+        
+<!-- IMAGE LEFT TEXT RIGHT SECTION -->
+        
+        <!-- Start of White Container - the full width container -->
+        <div class="whitecontainer">
+        
+                <!-- Start of Content - where the content be -->
+                <div class="content">
+                    
+                    <!-- Start of Half Column 1 - 50% width on the left side -->
+                    
+                    <h2>Get early access</h2>
+                    <p>We are preparing to lunch soon, and we are looking for beta testers. If you are interested in getting early access to our platform and providing feedback, please type your email below, and we will get back to you when the beta is available.</p>
+
+                    <!-- Begin MailChimp Signup Form -->
+                    <div id="mc_embed_signup">
+                        <form action="https://mymuselab.us9.list-manage.com/subscribe/post?u=49cda94882ca7a750cbb6f275&amp;id=60fc8ac599" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            
+                            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;"><input type="text" name="b_49cda94882ca7a750cbb6f275_60fc8ac599" value=""></div>
+                            <div class="clear"><input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                        </form>
+                    </div><!--End mc_embed_signup-->
+                    
+                    <p class="caption">We never share your information or use it to spam you.</p> 
+
+                    <a href="#"><i class="icon-gplus"></i></a>
+                    <a href="#"><i class="icon-pinterest"></i></a>
+                    <a href="#"><i class="icon-facebook"></i></a>
+                    <a href="#"><i class="icon-twitter"></i></a>
+                    <a href="#"><i class="icon-dribbble"></i></a>
+                    <a href="#"><i class="icon-flickr"></i></a>
+
+            </div><!-- End of Content -->
+            
+        </div><!-- End of Grey Container -->
+        
+	</div><!-- End of Container -->
+    
+</div><!-- End of Wrapper -->
+
+
+<!-- JQUERY SCRIPT SETTINGS -->
+
+<script>
+  jQuery(document).ready(function(){
+    // Target your .container, .wrapper, .post, etc.
+    jQuery("#toTop").scrollToTop(1000);
+	
+    jQuery(".navbar-fixed-top").headroom({
+    "tolerance": 15,
+    "offset": 100
+    });
+	
+	if(jQuery(window).width() >= 1025)
+	jQuery(window).bind('scroll',function(e){
+   		parallaxScroll();
+   	});
+ 
+   	function parallaxScroll(){
+   		var scrolledY = jQuery(window).scrollTop();
+		jQuery('.huge-title').css('bottom','-'+((scrolledY*0.55))+'px');
+		jQuery('.container').css('top','-'+((scrolledY*0.50))+'px');
+   	}	
+	
+	jQuery(window).scroll(function() {
+        if(jQuery(window).width() >= 1024)
+		jQuery('#phone').each(function(){
+		var imagePos = jQuery(this).offset().top;
+
+		var topOfWindow = jQuery(window).scrollTop();
+			if (imagePos < topOfWindow+600) {
+				jQuery(this).addClass("hatch");
+			}
+		});
+	});
+	
+	jQuery(document).ready(function(){
+  var didScroll = false;
+  var icon = $(".huge-title, #godown");
+  var $window = $(window);
+
+  jQuery(window).scroll(function(){
+      didScroll = true;
+  });
+
+  window.setInterval(function () {
+    if (didScroll) {
+      if (1-$window.scrollTop()/200 > -20) {
+          icon.css({opacity: 1-$window.scrollTop()/500});
+      }
+      didScroll = false;
+    }
+  }, 50);
+});
+	
+	
+  });
+</script> 
+
+</body>
+</html>
